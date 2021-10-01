@@ -23,6 +23,7 @@ SOFTWARE.
 #include "CombiAdapter.h"
 #include "interfaces.h"
 #include "mbed_retarget.h"
+#include "mbed_thread.h"
 #include "sizedefs.h"
 #include <cstdint>
 #include <cstdio>
@@ -36,9 +37,20 @@ bool CombiSendPacket(packet_t *packet, uint32_t timeout);
 
 uint8_t version[2] = {0x03, 0x01};
 uint8_t data_buff[64];
-Thread  t;
+uint8_t egt_temp[5] = {0};
+Thread can_rx_thd;
+Thread egt_thd;
 
-void read_can_message(void) {
+void egt_read_thd(void) {
+    while(true) {
+        float temp = sensor.gettemp(0);
+        egt_temp[0] = temp == -99.0f ? 0 : 1;
+        memcpy((float *)(egt_temp + 1), &temp, sizeof(float));
+        thread_sleep_for(300);
+    }
+}
+
+void can_read_thd(void) {
     CANMessage can_MsgRx;
     while(true) {
         if (can.read(can_MsgRx)) {
@@ -76,8 +88,11 @@ bool exec_cmd_can(packet_t *rx_packet, packet_t *tx_packet) {
                     printf("can close\r\n");
                     can_close();
                     can.attach(NULL);
+                    //can_rx_thd.terminate();
+                    //egt_thd.terminate();
                     return CombiSendReplyPacket(tx_packet, rx_packet, (uint8_t *)0x0, 0, cmd_term_ack, 1000);
                 }
+
                 printf("can open\r\n");
                 can_open();
                 
@@ -89,7 +104,8 @@ bool exec_cmd_can(packet_t *rx_packet, packet_t *tx_packet) {
                 
                 can.attach(NULL);
                 //can.mode(CAN::LocalTest);
-                t.start(&read_can_message);
+                can_rx_thd.start(&can_read_thd);
+                egt_thd.start(&egt_read_thd);
                 return CombiSendReplyPacket(tx_packet, rx_packet, (uint8_t *)0x0, 0, cmd_term_ack, 1000);
             }
         break;
@@ -100,7 +116,6 @@ bool exec_cmd_can(packet_t *rx_packet, packet_t *tx_packet) {
                                 | (uint32_t)rx_packet->data[2] << 8;
                 printf("can bitrate %lu \r\n", bitrate);
                 can_configure(2, bitrate, false);
-
                 return CombiSendReplyPacket(tx_packet, rx_packet, (uint8_t *)0x0, 0, cmd_term_ack, 1000);
             }
             break;
@@ -148,7 +163,7 @@ bool exec_cmd_board(packet_t *rx_packet, packet_t *tx_packet) {
             return CombiSendReplyPacket(tx_packet, rx_packet, (uint8_t *)0x0, 0, cmd_term_ack, 1000);
         case cmd_brd_egt:
             //printf("brd_egt\r\n");
-            return CombiSendReplyPacket(tx_packet, rx_packet, (uint8_t *)0x0, 0, cmd_term_ack, 1000);
+            return CombiSendReplyPacket(tx_packet, rx_packet, egt_temp, 5, cmd_term_ack, 1000);
         default:
             printf("brd_unhandled cmd: %x", rx_packet->cmd_code);
     }
