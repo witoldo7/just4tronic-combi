@@ -21,6 +21,9 @@ accept liability for any damage arising from its use.
 *******************************************************************************/
 
 #include "bdmcpu32.h"
+#include "interfaces.h"
+#include "bdmtrionic.h"
+#include "common.h"
 
 // constants
 #define MCU_SETTLE_TIME     10        ///< delay to let MCU switch modes, ms

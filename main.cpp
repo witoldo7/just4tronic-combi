@@ -4,7 +4,8 @@
 #include "can232.h"
 #include "t8can.h"
 #include <cstdint>
-#include "CombiAdapter.h"
+#include "combiadapter.h"
+#include "interfaces.h"
 
 // constants
 #define CMD_BUF_LENGTH      32              ///< command buffer size

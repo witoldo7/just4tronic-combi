@@ -1,4 +1,5 @@
 #include "gmlan.h"
+#include "interfaces.h"
 
 Timer   GMLANtimer;
 

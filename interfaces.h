@@ -16,7 +16,7 @@ accept liability for any damage arising from its use.
 
 #include "mbed.h"
 #include "max6675.h"
-#include "USBCombi.h"
+#include "usbcombi.h"
 
 extern Serial           pc;                     //Serial pc(USBTX, USBRX); // tx, rx
 extern CAN              can;     

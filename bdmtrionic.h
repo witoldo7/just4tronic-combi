@@ -21,11 +21,8 @@ accept liability for any damage arising from its use.
 #ifndef __BDMTRIONIC_H__
 #define __BDMTRIONIC_H__
 
-#include "mbed.h"
-
-#include "common.h"
-#include "bdmcpu32.h"
-#include "bdmdriver.h"
+#include <cstdint>
+//
 
 // global variables
 static bool verify_flash = 1;

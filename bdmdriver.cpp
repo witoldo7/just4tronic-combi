@@ -14,6 +14,8 @@ accept liability for any damage arising from its use.
 *******************************************************************************/
 
 #include "bdmdriver.h"
+#include "interfaces.h"
+#include "bdmcpu32.h"
 
 FILE *fp = NULL;
 

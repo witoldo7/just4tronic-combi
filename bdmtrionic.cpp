@@ -22,6 +22,9 @@ accept liability for any damage arising from its use.
 
 #include "bdmtrionic.h"
 #include <string.h>
+#include "interfaces.h"
+#include "bdmcpu32.h"
+#include "bdmdriver.h"
 
 // structure for command address/value pairs
 struct mempair_t {

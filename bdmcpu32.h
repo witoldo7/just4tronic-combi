@@ -21,10 +21,10 @@ accept liability for any damage arising from its use.
 #ifndef __BDMCPU32_H__
 #define __BDMCPU32_H__
 
-#include "mbed.h"
+#include "cstdint"
+//#include "mbed.h"
 
 #include "common.h"
-#include "bdmtrionic.h"
 //#include "BDM.h"
 
 
@@ -111,11 +111,11 @@ uint8_t adreg_read(uint32_t* result, uint8_t reg);
 uint8_t adreg_write(uint8_t reg, const uint32_t* value);
 
 // bdm part commands
-bool bdm_command (uint16_t cmd);
-bool bdm_address (const uint32_t* addr);
-bool bdm_get (uint32_t* result, uint8_t size, uint16_t next_cmd);
-bool bdm_put (const uint32_t* value, uint8_t size);
-bool bdm_ready (uint16_t next_cmd);
+bool bdm_command(uint16_t cmd);
+bool bdm_address(const uint32_t* addr);
+bool bdm_get(uint32_t* result, uint8_t size, uint16_t next_cmd);
+bool bdm_put(const uint32_t* value, uint8_t size);
+bool bdm_ready(uint16_t next_cmd);
 
 #endif    // __BDMCPU32_H__
 //-----------------------------------------------------------------------------

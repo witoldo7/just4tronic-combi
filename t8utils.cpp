@@ -16,10 +16,13 @@ accept liability for any damage arising from its use.
 *******************************************************************************/
 
 #include "t8utils.h"
+#include "interfaces.h"
+#include "t8bootloaders.h"
 
 Timer   TesterPresent;
 
-
+static const uint8_t T8BootloaderRead[] = T8_BOOTLOADER_DUMP;
+static const uint8_t T8BootLoaderWrite[] = T8_BOOTLOADER_PROG;
 //
 // t8_initialise
 //

@@ -17,6 +17,7 @@ accept liability for any damage arising from its use.
 
 #include "canutils.h"
 #include <cstdint>
+#include "interfaces.h"
 
 //CAN can2(p30, p29);
 // Use a timer to see if things take too long

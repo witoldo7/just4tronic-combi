@@ -17,7 +17,6 @@ accept liability for any damage arising from its use.
 #include "mbed.h"
 
 #include "common.h"
-#include "bdmcpu32.h"
 
 // public functions
 bool bdmLoadMemory(uint8_t dataArray[], uint32_t loadAddress, uint32_t dataArraySize);

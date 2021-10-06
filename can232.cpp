@@ -15,6 +15,8 @@ accept liability for any damage arising from its use.
 *******************************************************************************/
 
 #include "can232.h"
+#include "interfaces.h"
+#include "sizedefs.h"
 
 // constants
 #define CMD_BUF_LENGTH      32              ///< command buffer size

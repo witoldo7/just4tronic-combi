@@ -16,7 +16,7 @@
  */
 
 #include "stdint.h"
-#include "USBCombi.h"
+#include "usbcombi.h"
 #include "EndpointResolver.h"
 #include "AsyncOp.h"
 #include "usb_phy_api.h"
