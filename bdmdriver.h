@@ -13,9 +13,6 @@ accept liability for any damage arising from its use.
 
 #ifndef __BDMDRIVER_H__
 #define __BDMDRIVER_H__
-
-#include "mbed.h"
-
 #include "common.h"
 
 // public functions

@@ -15,7 +15,7 @@ accept liability for any damage arising from its use.
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-//#include <stdint.h>
+#include <cstdint>
 //#include <stdbool.h>
 
 #undef DEBUG
@@ -23,7 +23,6 @@ accept liability for any damage arising from its use.
 //#define DEBUG 1
 //#define DEBUG
 #endif
-
 #include "sizedefs.h"
 #include "strings.h"
 // build configuration

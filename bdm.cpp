@@ -61,7 +61,7 @@ accept liability for any damage arising from its use.
 #define CMDGROUP_MEMORY     'm'             ///< target MCU memory commands
 #define CMD_READBYTE        'b'             ///< read byte from memory
 #define CMD_READWORD        'w'             ///< read word (2 bytes) from memory
-#define CMD_READLONG        'l'             ///< read long word (4 bytes) from memory
+#define CMD_READLONG        'l'             ///< read long word (4 bytes) from memoboolry
 #define CMD_DUMPBYTE        'z'             ///< dump byte from memory
 #define CMD_DUMPWORD        'x'             ///< dump word from memory
 #define CMD_DUMPLONG        'c'             ///< dump long word from memory

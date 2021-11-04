@@ -20,11 +20,10 @@ accept liability for any damage arising from its use.
 
 *******************************************************************************/
 
-#include "bdmtrionic.h"
-#include <string.h>
 #include "interfaces.h"
 #include "bdmcpu32.h"
 #include "bdmdriver.h"
+#include "bdmtrionic.h"
 
 // structure for command address/value pairs
 struct mempair_t {
@@ -61,12 +60,8 @@ static const struct mempair_t flash_tag [] = {
 };
 
 // local functions
-bool reset_am29(void);
 bool erase_am29();
-bool flash_am29(const uint32_t* addr, uint16_t value);
-bool reset_am28(void);
 bool erase_am28(const uint32_t* start_addr, const uint32_t* end_addr);
-bool flash_am28(const uint32_t* addr, uint16_t value);
 bool get_flash_id(uint8_t* make, uint8_t* type);
 
 bool run_bdm_driver(uint32_t addr, uint32_t maxtime);
